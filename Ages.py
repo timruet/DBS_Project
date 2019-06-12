@@ -18,7 +18,4 @@ for j in range(len(tweets_df["userID"])):
         a = z-y
         a = a.total_seconds()
         ages = ages.append(to_append=pd.Series([a],index=[tweets_df["userID"][j]]))
-    if j == 100:
-        print(l)
-        print(ages)
 print(ages.head())
