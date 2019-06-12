@@ -1,4 +1,4 @@
-#number of followers
+#gives dataframe with userIDs as columns and followers in rows
 l = pd.Series()
 nf = pd.DataFrame()
 k= 0
