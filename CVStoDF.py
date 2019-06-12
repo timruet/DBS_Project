@@ -2,7 +2,6 @@
 import pandas as pd
 import os
 import csv
-import datetime as dt
 os.chdir("/Users/Tim/Documents/Tim/Studium/Berlin/Informatik/DBS/Projekt")
 FILE_NAME = "prj_user.csv"
 
