@@ -8,7 +8,5 @@ for j in range(len(tweets_df["userID"])):
         for i in range(len(tweets_df["userID"])-(j+1)):
             if tweets_df["userID"][i+j+1] == tweets_df["userID"][j]:
                 n += 1
-        nt = nt.append(to_append=pd.Series([n],index=[tweets_df["userID"][j]]))
-    if j==500:
-        print(nt)
-print(nt.head())
+        nt = nt.append(to_append=pd.Series([n],index=[tweets_df["userID"][j]])) 
+
