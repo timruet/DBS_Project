@@ -2,7 +2,7 @@
 nf = pd.Series()
 k= 0
 for i in range(len(users_df["id"])): 
-    k = followings_df["userID"][i]
+    k = users_df["userID"][i]
     x = followings_df["followerID"].where(followings_df["userID"]==k)
     x = x.dropna()
     nf=nf.append(pd.Series([len(x)],index=[k]))
