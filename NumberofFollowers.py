@@ -1,11 +1,15 @@
 #faster
+#number of followers
 nf = pd.Series()
-k= 0
+k=0
 for i in range(len(users_df["id"])): 
-    k = users_df["userID"][i]
-    x = followings_df["followerID"].where(followings_df["userID"]==k)
-    x = x.dropna()
-    nf=nf.append(pd.Series([len(x)],index=[k]))
+    try:
+        k = float(users_df["id"][i])
+        x = followings_df["followerID"].where(followings_df["userID"]==k)
+        x = x.dropna()
+        nf=nf.append(pd.Series([len(x)],index=[k]))
+    except:
+        pass
 
 #gives dataframe with userIDs as columns and followers in rows
 l = pd.Series()
