@@ -2,7 +2,7 @@
 #faster
 k=0
 ifo=pd.DataFrame()
-for i in range(100): 
+for i in range(len(users_df["id"])): 
     l_i = pd.Series()
     try:
         k = float(users_df["id"][i])
