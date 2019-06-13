@@ -1,13 +1,14 @@
+#is fan of
 #faster
-#number of followers
-nf = pd.Series()
 k=0
-for i in range(len(users_df["id"])): 
+ifo=pd.DataFrame()
+for i in range(100): 
+    l_i = pd.Series()
     try:
         k = float(users_df["id"][i])
-        x = tweets_df["tweetID"].where(tweets_df["userID"]==k)
+        x = followings_df["followerID"].where(followings_df["userID"]==k)
         x = x.dropna()
-        nf=nf.append(pd.Series([len(x)],index=[k]))
+        ifo[users_df["id"][i]]=x
     except:
         pass
 
