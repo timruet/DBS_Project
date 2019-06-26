@@ -5,7 +5,7 @@ FROM User
 SELECT DISTINCT userid
 FROM (SELECT userid, COUNT(userid)
 	FROM relationship
-	WHERE Typ=marriage
+	WHERE Typ=dates
 	GROUP BY userid
 	ORDER BY COUNT(userid) DESC
 	LIMIT 1)
