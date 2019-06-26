@@ -9,13 +9,15 @@ def connect():
 
         cur = conn.cursor()
 
-        cur.execute(SELECT MAX(Age) FROM User)
+        #1
+	cur.execute(SELECT MAX(Age) FROM User)
 
-        # display the result of the query
         result = cur.fetchone()
         print("Age of the oldest person:" + " " + result)
 
-        cur.execute(SELECT DISTINCT userid FROM (SELECT userid, COUNT(userid)
+        
+	#2
+	cur.execute(SELECT DISTINCT userid FROM (SELECT userid, COUNT(userid)
         		FROM relationship
 				WHERE Typ=dates
 				GROUP BY userid
@@ -25,6 +27,7 @@ def connect():
         result = cur.fetchone()
         print("ID of the person with the highest number dates:" + " " + result)
 
+	#3
         cur.execute(SELECT DISTINCT userid 
         			FROM (SELECT userid,COUNT(Einkommen)
         				FROM User
@@ -37,6 +40,7 @@ def connect():
         print("ID of the person with the highest income:" + " " + result)
 
 
+	#4
         cur.execute(SELECT COUNT(userid)
 					FROM (SELECT dates, COUNT(userid) 
 						FROM relationship
@@ -50,6 +54,7 @@ def connect():
         print("Number of people who have more than one marriage:" + " " + result)
 
 
+	#5
         cur.execute(SELECT DISTINCT userid
 					FROM (SELECT userid,COUNT(userid)
 						FROM isfanof 
@@ -61,6 +66,8 @@ def connect():
         result = cur.fetchone()
         print("ID of the person with the highest number of fans:" + " " + result)
 
+		    
+	#6
         cur.execute(SELECT DISTINCT userid FROM User
 					EXCEPT
 					SELECT userid FROM isfanof NATURAL JOIN relationship)
