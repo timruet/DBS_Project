@@ -17,23 +17,28 @@ def connect():
 
         
 	#2
-	cur.execute(SELECT DISTINCT userid FROM (SELECT userid, COUNT(userid)
+	cur.execute(
+		SELECT DISTINCT userid 
+		FROM (
+			SELECT userid, COUNT(userid)
         		FROM relationship
-				WHERE Typ=dates
-				GROUP BY userid
-				ORDER BY COUNT(userid) DESC
-				LIMIT 1)
+			WHERE Typ=dates
+			GROUP BY userid
+			ORDER BY COUNT(userid) DESC
+			LIMIT 1))
 
         result = cur.fetchone()
         print("ID of the person with the highest number dates:" + " " + result)
 
 	#3
-        cur.execute(SELECT DISTINCT userid 
-        			FROM (SELECT userid,COUNT(Einkommen)
-        				FROM User
-						GROUP BY userid
-						ORDER BY COUNT(Einkommen) DESC
-						LIMIT 1)
+        cur.execute(
+		SELECT DISTINCT userid 
+        	FROM (
+			SELECT userid,COUNT(Einkommen)
+        		FROM User
+			GROUP BY userid
+			ORDER BY COUNT(Einkommen) DESC
+			LIMIT 1)
 
 
         result = cur.fetchone()
@@ -41,13 +46,15 @@ def connect():
 
 
 	#4
-        cur.execute(SELECT COUNT(userid)
-					FROM (SELECT dates, COUNT(userid) 
-						FROM relationship
-						WHERE Typ=marriage
-						GROUP BY userid
-						HAVING COUNT(userid)>2
-						ORDER BY COUNT(userid) DESC)))
+        cur.execute(
+		SELECT COUNT(userid)
+		FROM (
+			SELECT dates, COUNT(userid) 
+			FROM relationship
+			WHERE Typ=marriage
+			GROUP BY userid
+			HAVING COUNT(userid)>2
+			ORDER BY COUNT(userid) DESC)))
 
 
         result = cur.fetchone()
@@ -55,12 +62,14 @@ def connect():
 
 
 	#5
-        cur.execute(SELECT DISTINCT userid
-					FROM (SELECT userid,COUNT(userid)
-						FROM isfanof 
-						GROUP BY userid
-						ORDER BY COUNT(userid) DESC
-						LIMIT 1))
+        cur.execute(
+		SELECT DISTINCT userid
+		FROM (
+			SELECT userid,COUNT(userid)
+			FROM isfanof 
+			GROUP BY userid
+			ORDER BY COUNT(userid) DESC
+			LIMIT 1))
 
 
         result = cur.fetchone()
@@ -68,9 +77,11 @@ def connect():
 
 		    
 	#6
-        cur.execute(SELECT DISTINCT userid FROM User
-					EXCEPT
-					SELECT userid FROM isfanof NATURAL JOIN relationship)
+        cur.execute(
+		SELECT DISTINCT userid 
+		FROM User
+		EXCEPT
+		SELECT userid FROM isfanof NATURAL JOIN relationship)
 
 
 
