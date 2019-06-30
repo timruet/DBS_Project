@@ -1,4 +1,4 @@
-#I used the unique paths in my dictionary to get to the csv file, you have to change that to your own path
+
 import pandas as pd
 import os
 import csv
