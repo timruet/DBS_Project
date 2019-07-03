@@ -1,3 +1,5 @@
+import psycopg2
+
 def connect():
     conn = None
     try:
