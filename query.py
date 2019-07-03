@@ -29,7 +29,7 @@ def get_user_with_most_dates():
 
 		cur = conn.cursor()
 
-		cur.execute("SELECT DISTINCT id FROM (SELECT id ,COUNT(id) FROM marriage GROUP BY id ORDER BY COUNT(id) DESC LIMIT 1) as a")
+		cur.execute("SELECT DISTINCT id FROM (SELECT id ,COUNT(id) FROM dates GROUP BY id ORDER BY COUNT(id) DESC LIMIT 1) as a")
 
 		result2 = cur.fetchone()[0]
 		cur.close()
