@@ -21,7 +21,7 @@ def get_oldest():
 	return result
             
             
-def get_person_with_most_dates():
+def get_user_with_most_dates():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
