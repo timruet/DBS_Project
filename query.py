@@ -1,6 +1,6 @@
 import psycopg2
 
-def connect1():
+def get_oldest():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
@@ -11,7 +11,6 @@ def connect1():
         cur.execute("SELECT MAX(age) FROM mfb_user")
 
         result = cur.fetchone()[0]
-        print("Age of the oldest person:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -19,9 +18,10 @@ def connect1():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+	return result
             
             
-def connect2():
+def get_person_with_most_dates():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
@@ -38,7 +38,6 @@ def connect2():
     LIMIT 1)")
 
         result = cur.fetchone()[0]
-        print("Person with the highest number of dates:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -46,9 +45,10 @@ def connect2():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+	return result
             
             
-def connect3():
+def get_user_with_highest_income():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
@@ -64,7 +64,6 @@ def connect3():
 	LIMIT 1)")
 
         result = cur.fetchone()[0]
-        print("Person with the highest income:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -72,9 +71,10 @@ def connect3():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+	return result
             
             
-def connect4():
+def get_number_of_users_with_more_than_two_marriages():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
@@ -102,7 +102,6 @@ def connect4():
         DESC)))")
 
         result = cur.fetchone()[0]
-        print("Number of people who have more than one marriage:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -110,10 +109,11 @@ def connect4():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+	return result
             
             
             
-def connect5():
+def get_user_with_most_fans():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
@@ -140,7 +140,6 @@ def connect5():
         1))")
 
         result = cur.fetchone()[0]
-        print("Person with the highest number of fans:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -148,10 +147,11 @@ def connect5():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+	return result
             
             
             
-def connect6():
+def get_number_of_users_without_fans_or_relationship():
     conn = None
     try:
         print('Connecting to the PostgreSQL database...')
@@ -174,7 +174,6 @@ def connect6():
         relationship)")
 
         result = cur.fetchone()[0]
-        print("Number of users who have no fans and no romantic relationship:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -182,3 +181,4 @@ def connect6():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+	return result
