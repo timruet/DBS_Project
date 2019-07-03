@@ -26,7 +26,6 @@ def connect():
         DESC)))")
 
         result = cur.fetchone()[0]
-        print("Number of people who have more than one marriage:" + " " + str(result))
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -34,3 +33,4 @@ def connect():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+    return result
