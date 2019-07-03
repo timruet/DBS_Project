@@ -1,10 +1,12 @@
 # DBS_Project
 
-Database Systems Sommer Semester FU final project - Mini facebook page 
+Database Systems Sommer Semester FU Berlin final project - Mini facebook page 
 
 ## Getting Started
 
 ### Where to find data
+
+Original Data can be found at FU Berlin kvv web system
 
 ### How to run data processing scripts
 
