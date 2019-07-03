@@ -32,21 +32,33 @@
         <div class="container">
             <h2 class="text-uppercase text-center text-secondary">Fans</h2>
             <hr class="star-dark mb-5">
-            <p>{{ fan }}</p>
+            <div class="text-uppercase text-center text-secondary">
+                {% for fan in fans %}
+                  <li>{{ fan}}</li>
+                {% endfor %}
+            </div>
         </div>
     </section>
     <section id="dates">
         <div class="container">
             <h2 class="text-uppercase text-center text-secondary mb-0">Dates</h2>
             <hr class="star-dark mb-5">
-            <p>{{ dates }}</p>
+            <div class="text-uppercase text-center text-secondary">
+                {% for date in dates %}
+                  <li>{{ date}}</li>
+                {% endfor %}
+            </div>
         </div>
     </section>
     <section id="marriages">
         <div class="container">
             <h2 class="text-uppercase text-center text-secondary mb-0">Marriages</h2>
             <hr class="star-dark mb-5">
-            <p>{{ married }}</p>
+            <div class="text-uppercase text-center text-secondary">
+                {% for marriage in marriages %}
+                  <li>{{ marriage}}</li>
+                {% endfor %}
+            </div>
         </div>
     </section>
     <script src="/static/js/bootstrap.min.js"></script>
