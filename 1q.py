@@ -11,7 +11,6 @@ def connect():
         cur.execute("SELECT MAX(age) FROM mfb_user")
 
         result = cur.fetchone()[0]
-        return result
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
@@ -19,3 +18,4 @@ def connect():
         if conn is not None:
             conn.close()
             print('Database connection closed.')
+    return result
