@@ -11,7 +11,7 @@ def connect():
         cur.execute("SELECT MAX(age) FROM mfb_user")
 
         result = cur.fetchone()[0]
-        print("Age of the oldest person:" + " " + str(result))
+        return result
     cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
