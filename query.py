@@ -79,7 +79,7 @@ def get_number_of_users_with_more_than_two_marriages():
 
 		cur = conn.cursor()
 
-		cur.execute("SELECT COUNT(id) FROM(SELECT id, COUNT(id) FROM dates GROUP BY id HAVING COUNT(id) >= 2 ORDER BY COUNT(id) DESC) as a")
+		cur.execute("SELECT COUNT(id) FROM(SELECT id, COUNT(id) FROM marriage GROUP BY id HAVING COUNT(id) >= 2 ORDER BY COUNT(id) DESC) as a")
 
 		result4 = cur.fetchone()[0]
 
