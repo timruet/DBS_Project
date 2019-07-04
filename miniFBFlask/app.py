@@ -45,12 +45,21 @@ def show_user(user_id=614754689):
                            dates=dates_query_result, marriages=marriage_query_result)
 
 
-@app.route("/search", methods = ['POST', 'GET'])
+@app.route("/search", methods = ['GET', "POST"])
 def search():
-    name = None
-    if request.method == 'POST':
-        name = request.form
+
+        name= request.args.get('userScreenName')
+
+        if not name:
+            return render_template("search.html")
+
+
+
         user_query_result = get_user_data_based_on_user_name(name)
+
+        if not user_query_result:
+            return render_template("search.html", message = "No such user")
+
         ID = user_query_result[0]
 
         age = user_query_result[3]
@@ -63,12 +72,10 @@ def search():
         dates_query_result = get_who_user_dates_by_user_id(ID)
 
         marriage_query_result = get_who_user_marries_by_user_id(ID)
-        if user_query_result is not None:
-            return render_template("index.html", name = name ,ID = ID,
-                           age=age, income=income, fans=fan_query_result,
-                           dates=dates_query_result, marriages=marriage_query_result)
-        else:
-            return render_template("search.html", screenName = name)
+
+        return render_template("index.html", name = name ,ID = ID,
+                       age=age, income=income, fans=fan_query_result,
+                       dates=dates_query_result, marriages=marriage_query_result)
 
 def get_user_data():
     name = request.args.get('name')

@@ -41,7 +41,7 @@ def get_user_data_based_on_user_name(user_name):
 
         cur.execute(f"SELECT id, screenname, name, age, income "
                     f"FROM facebook_user "
-                    f"where name = {user_name}")
+                    f"WHERE facebook_user.screenname = \'{user_name}\' ")
 
         result = cur.fetchone()
         cur.close()
@@ -154,4 +154,4 @@ def get_who_user_marries_by_user_id(user_id):
 
 
 if __name__ == "__main__":
-    print(get_who_user_dates_by_user_id(1031571313352224768))
+    print(get_user_data_based_on_user_name("easySmuu"))
