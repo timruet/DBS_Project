@@ -30,6 +30,29 @@ def get_user_data_based_on_user_id(user_id):
     return result
 
 
+def get_user_data_based_on_user_name(user_name):
+    conn = None
+    result = None
+
+    try:
+        conn = psycopg2.connect(host="localhost", database=DATABASE, user=USER, password=PASSWORD)
+
+        cur = conn.cursor()
+
+        cur.execute(f"SELECT id, screenname, name, age, income "
+                    f"FROM facebook_user "
+                    f"where name = {user_name}")
+
+        result = cur.fetchone()
+        cur.close()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+    return result
+
 def get_number_of_records():
     conn = None
     result = None

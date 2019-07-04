@@ -14,13 +14,15 @@
                                         <i class="fas fa-search h4 text-body"></i>
                                     </div>
                                     <!--end of col-->
+                                    <form action = "http://localhost:5000/search" method = "post">
                                     <div class="col">
-                                        <input class="form-control form-control-lg form-control-borderless" value={{screenName}} type="search" placeholder="Search for screen names">
+                                         <input class="form-control form-control-lg form-control-borderless" value="{{screenName}}" type="search" placeholder="Search for screen names">
                                     </div>
                                     <!--end of col-->
                                     <div class="col-auto">
                                         <button class="btn btn-lg btn-success" type="submit">Search</button>
                                     </div>
+                                    </form>
                                     <!--end of col-->
                                 </div>
                             </form>
